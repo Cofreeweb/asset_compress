@@ -96,6 +96,7 @@ class AssetCompiler {
 
 		$output = '';
 		$files = $this->_Config->files($build);
+		
 		if (empty($files)) {
 			throw new RuntimeException(sprintf('No files found for build file "%s"', $build));
 		}

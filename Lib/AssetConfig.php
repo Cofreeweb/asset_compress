@@ -388,6 +388,9 @@ class AssetConfig {
 		$ext = $this->getExt($target);
 		if ($files === null) {
 			if (isset($this->_data[$ext][self::TARGETS][$target]['files'])) {
+			  if( empty( $this->_data[$ext][self::TARGETS][$target]['files'])) {
+			    $this->_data[$ext][self::TARGETS][$target]['files'] = array( str_replace( '.css', '', $target));
+			  }
 				return (array)$this->_data[$ext][self::TARGETS][$target]['files'];
 			}
 			return array();
