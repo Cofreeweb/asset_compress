@@ -16,7 +16,7 @@ class CssMinFilter extends AssetFilter {
  * @var array
  */
 	protected $_settings = array(
-		'path' => 'cssmin/CssMin.php'
+		'path' => 'cssmin/src/CssMin.php'
 	);
 
 /**
