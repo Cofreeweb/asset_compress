@@ -23,6 +23,15 @@ class AssetCompressShell extends AppShell {
 	public function startup() {
 		parent::startup();
 
+		if( isset( $this->params ['theme']))
+		{
+			Configure::write( 'AssetCompress.fileConfig', APP . 'View' . DS . 'Themed' .DS. $this->params ['theme'] .DS. 'Config' .DS. 'assets.ini');
+		}
+		elseif( isset( $this->params ['file']))
+		{
+			Configure::write( 'AssetCompress.fileConfig', APP . 'Config' . DS . $this->params ['file'] .'.ini');
+		}
+
 		AssetConfig::clearAllCachedKeys();
 		$this->_Config = AssetConfig::buildFromIniFile($this->params['config']);
 		$this->AssetBuild->setThemes($this->_findThemes());
@@ -190,6 +199,12 @@ class AssetCompressShell extends AppShell {
 			'help' => 'Force assets to rebuild. Ignores timestamp rules.',
 			'short' => 'f',
 			'boolean' => true
+		))->addOption('theme', array(
+			'help' => 'The theme.',
+			'short' => 't',
+		))->addOption('file', array(
+			'help' => 'The file.',
+			'short' => 'g',
 		));
 	}
 }

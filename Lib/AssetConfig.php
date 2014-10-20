@@ -90,15 +90,14 @@ class AssetConfig {
  *    when parsing paths.
  */
 	public static function buildFromIniFile($iniFile = null, $constants = array()) {
-		if (empty($iniFile)) {
-
+		// if (empty($iniFile)) {
 			$iniFile = Configure::read( 'AssetCompress.fileConfig');
 
 			if( is_null( $iniFile) || !$iniFile || empty( $iniFile))
 			{
 				$iniFile = APP . 'Config' . DS . 'asset_compress.ini';
 			}
-		}
+		// }
 
 		// If the AssetConfig is in cache, means that user had General.cacheConfig in their ini.
 		if ($parsedConfig = Cache::read(self::CACHE_ASSET_CONFIG_KEY, self::CACHE_CONFIG)) {
